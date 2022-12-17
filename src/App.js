@@ -9,25 +9,25 @@ import Navbar from "./components/navbar/navbar";
 import Signup from "./components/auth/signup/signup";
 import Signin from "./components/auth/signin/signin";
 import Movies from "./components/movies/movies";
-import Movie from "./components/movies/movie/movie";
+import MovieDetails from "./components/movies/movie-details/movie-details";
 function App() {
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <Navbar />
         <div className="container">
           <Switch>
             <Route exact path="/">
-              <Redirect to="/movies/popular"></Redirect>
+              <Redirect to="/movies/m/popular"></Redirect>
             </Route>
-            <Route path="/user/auth/signin" component={Signin}></Route>
-            <Route path="/user/auth/signup" component={Signup}></Route>
-            <Router path="/movies/popular" component={Movies}></Router>
-            <Router path="/movies/popular/:id" component={Movie}></Router>
+            <Route exact path="/user/auth/signin" component={Signin}></Route>
+            <Route exact path="/user/auth/signup" component={Signup}></Route>
+            <Route exact path="/movies/m/:state" component={Movies}></Route>
+            <Route path="/movies/:id" component={MovieDetails}></Route>
           </Switch>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

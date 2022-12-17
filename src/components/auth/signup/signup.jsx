@@ -14,6 +14,7 @@ const Signup = (props) => {
     phone: true,
     password: true,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const filed = e.target;
@@ -30,6 +31,10 @@ const Signup = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 800);
   };
   return (
     <div className="row auth-sinup auth-template">
@@ -135,10 +140,15 @@ const Signup = (props) => {
               className="btn"
               type="submit"
               disabled={
-                errors.name || errors.email || errors.phone || errors.password
+                errors.name ||
+                errors.email ||
+                errors.phone ||
+                errors.password ||
+                loading
               }
             >
               <i className="fa-solid fa-right-to-bracket"></i> sign up
+              {loading && <span> . . .</span>}
             </button>
           </div>
           <div className="form-group text-center switch-auth">

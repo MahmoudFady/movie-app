@@ -4,7 +4,7 @@ const Navbar = (props) => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light bg-light">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/movies/m/popular">
           <img src="https://www.watchit.com/assets/images/logo.png" alt="" />
         </Link>
         <button
@@ -18,24 +18,24 @@ const Navbar = (props) => {
         >
           <i className="fa-solid fa-bars"></i>
         </button>
-        <div className="collapse navbar-collapse " id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <Link className="nav-link" to="/movies/popular">
+              <Link className="nav-link" to="/movies/m/popular">
                 {" "}
-                <i className="fa-solid fa-house"></i> popular
+                <i class="fa-solid fa-fire"></i> popular
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/movies/popular">
+              <Link className="nav-link" to="/movies/m/top_rated">
                 {" "}
-                <i className="fa-solid fa-arrow-trend-up"></i> trends
+                <i className="fa-solid fa-arrow-trend-up"></i> top rated
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/movies/popular">
+              <Link className="nav-link" to="/movies/m/upcoming">
                 {" "}
-                <i className="fa-solid fa-heart-circle-check"></i> Pricing
+                <i class="fas fa-spinner"></i> coming soon
               </Link>
             </li>
             <li className="nav-item">

@@ -8,6 +8,7 @@ const Signin = () => {
     email: true,
     password: true,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const filed = e.target;
@@ -23,7 +24,12 @@ const Signin = () => {
     });
   };
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
+    setTimeout(() => {
+      setLoading(false);
+      console.log("signin success");
+    }, 800);
   };
   return (
     <div className="row auth-signin auth-template">
@@ -88,9 +94,10 @@ const Signin = () => {
             <button
               className="btn"
               type="submit"
-              disabled={errors.email || errors.password}
+              disabled={errors.email || errors.password || loading}
             >
-              <i className="fa-solid fa-right-to-bracket"></i> sign in
+              <i className="fa-solid fa-right-to-bracket"></i> sing in
+              {loading && <span> . . .</span>}
             </button>
           </div>
           <div className="form-group text-center switch-auth">

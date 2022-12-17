@@ -1,0 +1,29 @@
+.movies-hook {
+  margin-top: 50px !important;
+}
+div.movies-hook div.pagination-controlls {
+  margin: 10px 0px;
+}
+div.movies-hook div.pagination-controlls button {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  margin: 10px 15px;
+  margin-right: 15px;
+  margin-left: 0px;
+}
+div.loading {
+  margin-top: 50px !important;
+  color: var(--textColor);
+}
+div.search-contolls i.fa-search {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+div.row.search-contolls > div {
+  margin-bottom: 10px;
+}
+div.search-contolls input[type="text"] {
+  text-indent: 30px;
+}
