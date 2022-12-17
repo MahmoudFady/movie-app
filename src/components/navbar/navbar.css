@@ -1,0 +1,23 @@
+.navbar {
+  background-color: var(--bgMatchColor) !important;
+  color: #fff !important;
+}
+.navbar .navbar-brand img {
+  width: 120px;
+}
+.navbar .navbar-toggler {
+  color: #fff;
+}
+.navbar .navbar-collapse {
+  justify-content: center !important;
+  align-items: center !important;
+}
+.navbar .navbar-collapse ul li {
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .navbar .navbar-collapse ul li {
+    margin: 5px auto;
+    padding: 5px;
+  }
+}
