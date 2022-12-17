@@ -1,14 +1,14 @@
-div.auth-signin {
+div.auth-template {
   margin-top: 100px;
   justify-content: center;
   align-items: center;
 }
-div.auth-signin form {
+div.auth-template form {
   padding: 10px 25px;
   box-shadow: var(--boxShadow);
   border-radius: 5px;
 }
-div.auth-signin form div.header {
+div.auth-template form div.header {
   width: 100px;
   height: 100px;
   background-color: var(--mainColor);
@@ -16,16 +16,16 @@ div.auth-signin form div.header {
   line-height: 100px;
   border-radius: 50%;
   color: #fff;
-  font-size: 44px;
+  font-size: 35px;
   margin: -50px auto;
   margin-bottom: 25px;
 }
-div.auth-signin form > div.form-group {
+div.auth-template form > div.form-group {
   position: relative;
   overflow: hidden;
   border-radius: 5px;
 }
-div.auth-signin form > div.form-group > i {
+div.auth-template form > div.form-group > i {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -36,24 +36,24 @@ div.auth-signin form > div.form-group > i {
   text-align: center;
   color: #fff;
 }
-div.auth-signin form div.form-group > h4 {
+div.auth-template form div.form-group > h4 {
   text-align: center;
 }
-div.auth-signin form div.form-group > button {
+div.auth-template form div.form-group > button {
   width: 100%;
   background-color: var(--mainColor);
   color: #fff;
 }
-div.auth-signin form div.form-group > input {
+div.auth-template form div.form-group > input {
   text-indent: 40px;
 }
-div.auth-signin form > div.form-group > i.fa-circle-exclamation,
-div.auth-signin form > div.form-group > i.fa-check {
+div.auth-template form > div.form-group > i.fa-circle-exclamation,
+div.auth-template form > div.form-group > i.fa-check {
   left: calc(100% - (30px + 15px));
   color: #f00;
   background-color: transparent;
 }
-div.auth-signin form > div.form-group > i.fa-check {
+div.auth-template form > div.form-group > i.fa-check {
   color: #080;
 }
 form div.input-err-msg {

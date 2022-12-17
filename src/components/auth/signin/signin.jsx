@@ -1,29 +1,14 @@
 import "./sigin.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { handleInputError } from "../validation";
 const Signin = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({
     email: true,
     password: true,
   });
-  const isInvalidInput = (name, value) => {
-    if (value.trim() == "") {
-      return `${name} is required`;
-    }
-    return false;
-  };
-  const isInvalidEmail = (email) => {
-    if (isInvalidInput("email", email)) {
-      return isInvalidInput("email", email);
-    }
-    const emailRegEx = new RegExp(
-      /^([a-zA-Z]{1,21}[0-9]{0,10}@(gmail|yahoo)\.com)$/
-    );
-    if (!emailRegEx.test(email)) {
-      return "invalid email ex : abc@gmail.com";
-    }
-    return false;
-  };
+
   const handleInputChange = (e) => {
     const filed = e.target;
     const { name, value } = filed;
@@ -31,8 +16,7 @@ const Signin = () => {
       ...user,
       [name]: value.trim(),
     });
-    const error =
-      name == "email" ? isInvalidEmail(value) : isInvalidInput(name, value);
+    const error = handleInputError(name, value);
     setErrors({
       ...errors,
       [name]: error ? error : null,
@@ -42,7 +26,7 @@ const Signin = () => {
     e.preventDefault();
   };
   return (
-    <div className="row auth-signin">
+    <div className="row auth-signin auth-template">
       <div className="col-md-6 col-lg-5">
         <form onSubmit={handleSubmit}>
           <div className="header">
@@ -104,7 +88,7 @@ const Signin = () => {
             <button
               className="btn"
               type="submit"
-              disabled={errors.email || errors.password ? true : false}
+              disabled={errors.email || errors.password}
             >
               <i className="fa-solid fa-right-to-bracket"></i> sign in
             </button>
@@ -112,9 +96,9 @@ const Signin = () => {
           <div className="form-group text-center switch-auth">
             <p>
               don't have account ?{" "}
-              <a className="text-danger" href="#">
+              <Link to="/user/auth/signup" className="text-danger">
                 signup now
-              </a>
+              </Link>
             </p>
           </div>
         </form>
