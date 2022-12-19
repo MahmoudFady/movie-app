@@ -10,6 +10,7 @@ import Signup from "./components/auth/signup/signup";
 import Signin from "./components/auth/signin/signin";
 import Movies from "./components/movies/movies";
 import MovieDetails from "./components/movies/movie-details/movie-details";
+import PageNotFound from "./components/404/404.jsx";
 function App() {
   return (
     <div className="App">
@@ -22,8 +23,13 @@ function App() {
             </Route>
             <Route exact path="/user/auth/signin" component={Signin}></Route>
             <Route exact path="/user/auth/signup" component={Signup}></Route>
-            <Route exact path="/movies/m/:state" component={Movies}></Route>
+            <Route
+              exact
+              path="/movies/m/:movieState"
+              component={Movies}
+            ></Route>
             <Route path="/movies/:id" component={MovieDetails}></Route>
+            <Route path="**" component={PageNotFound}></Route>
           </Switch>
         </div>
       </Router>

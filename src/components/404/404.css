@@ -1,0 +1,8 @@
+.page-not-found .alert {
+  border: none;
+}
+.page-not-found button {
+  width: 120px !important;
+  padding: 0px;
+  margin: 0px !important;
+}

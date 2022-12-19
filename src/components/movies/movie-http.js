@@ -6,4 +6,7 @@ const getMovies = (state, page = 1) => {
 const searchByName = (target) => {
   return axiosInstance.get(`search/movie?query=${target}`);
 };
-export { getMovies, searchByName };
+const getMovieDetailsById = (id) => {
+  return axiosInstance.get(`movie/${id}`);
+};
+export { getMovies, searchByName, getMovieDetailsById };

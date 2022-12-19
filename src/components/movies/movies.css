@@ -1,10 +1,10 @@
 .movies-hook {
   margin-top: 50px !important;
 }
-div.movies-hook div.pagination-controlls {
+div.pagination-controlls {
   margin: 10px 0px;
 }
-div.movies-hook div.pagination-controlls button {
+div.pagination-controlls button {
   display: inline-block;
   width: 100px;
   height: 40px;

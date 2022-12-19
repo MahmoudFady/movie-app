@@ -3,44 +3,33 @@ import { useState, useEffect } from "react";
 import { getMovies, searchByName } from "./movie-http";
 import "./movies.css";
 import Movie from "./movie/movie";
-const Movies = (props) => {
-  const [loading, setLoading] = useState(false);
-  const { state } = useParams();
+import { useSelector } from "react-redux";
+import Loader from "../shared/loader/loader";
+import Error from "../shared/error/error";
+const Movies = () => {
+  const { movieState } = useParams();
   const [movies, setMovies] = useState([]);
-  const [responseError, setResponseError] = useState(null);
   const [pageIndex, setPageIndex] = useState(1);
+  const loader = useSelector((data) => data.loader.loader);
+  const error = useSelector((data) => data.error.error);
   useEffect(() => {
-    setLoading(true);
-    getMovies(state, pageIndex)
-      .then((response) => {
-        const movies = response.data.results;
-        setMovies(movies);
-        setTimeout(() => {
-          setLoading(false);
-          setResponseError(movies.length == 0 ? "no movie founded" : null);
-        }, 250);
-      })
-      .catch((err) => {
-        setResponseError(err.message);
-        setLoading(false);
-      });
-  }, [state, pageIndex]);
+    getMovies(movieState, pageIndex).then((response) => {
+      const movies = response.data.results;
+      setMovies(movies);
+    });
+  }, [movieState, pageIndex]);
   const handleMovieSearch = (e) => {
     const target = e.target.value;
     const moviesPromise =
-      target.trim() === "" ? getMovies(state, pageIndex) : searchByName(target);
-    moviesPromise
-      .then((response) => {
-        const movies = response.data.results;
-        setMovies(movies);
-        setResponseError(movies.length == 0 ? "no movie founded" : null);
-      })
-      .catch((err) => {
-        setResponseError(err.message);
-      });
+      target.trim() === ""
+        ? getMovies(movieState, pageIndex)
+        : searchByName(target);
+    moviesPromise.then((response) => {
+      const movies = response.data.results;
+      setMovies(movies);
+    });
   };
-  const handleMoviesPageIndex = (operator) => {
-    const num = operator === "+" ? 1 : -1;
+  const handleMoviesPageIndex = (num) => {
     setPageIndex(num + pageIndex);
   };
   return (
@@ -50,40 +39,33 @@ const Movies = (props) => {
           <input
             type="text"
             placeholder="search..."
-            onChange={handleMovieSearch}
+            onKeyUp={handleMovieSearch}
           />
           <i className="fa-solid fa-search"></i>
         </div>
       </div>
-      <div className="movies-hook row">
-        {" "}
+      <div className="row">
         <div className="pagination-controlls col-12">
           <button
             type="btn"
-            disabled={pageIndex == 1}
-            onClick={() => handleMoviesPageIndex("-")}
+            disabled={pageIndex === 1}
+            onClick={() => handleMoviesPageIndex(-1)}
           >
             <i class="fa-solid fa-arrow-left"></i> prev
           </button>
-          <button onClick={() => handleMoviesPageIndex("+")}>
+          <button onClick={() => handleMoviesPageIndex(1)}>
             next <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-        {!loading &&
+      </div>
+      <div className="movies-hook row">
+        {" "}
+        {!loader &&
           movies.map((movie, index) => <Movie key={index} movie={movie} />)}
       </div>
       <div className="row">
-        {loading && (
-          <div className="col text-center mt-25 loading">
-            <h5>loading...</h5>
-            <span className="spinner-border"></span>
-          </div>
-        )}
-        {responseError && (
-          <div className="col-12 text-center mt-25">
-            <h5>{responseError}</h5>
-          </div>
-        )}
+        <Loader loader={loader} />
+        <Error loader={loader} error={error} />
       </div>
     </>
   );
