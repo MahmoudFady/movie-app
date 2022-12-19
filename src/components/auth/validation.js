@@ -9,7 +9,7 @@ const isInvalidName = (name) => {
   if (isInvalid) {
     return isInvalid;
   }
-  if (name.length < 2) {
+  if (name.length <= 2) {
     return "name must be more than 2 chars";
   }
   return false;

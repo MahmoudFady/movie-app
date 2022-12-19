@@ -25,8 +25,8 @@ const MovieDetails = (props) => {
         </div>
       )}
       <div className="row">
-        <Loader loader={loader} />
-        <Error loader={loader} error={error} />
+        <Loader />
+        <Error />
       </div>
     </>
   );

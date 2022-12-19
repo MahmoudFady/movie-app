@@ -64,8 +64,8 @@ const Movies = () => {
           movies.map((movie, index) => <Movie key={index} movie={movie} />)}
       </div>
       <div className="row">
-        <Loader loader={loader} />
-        <Error loader={loader} error={error} />
+        <Loader />
+        <Error />
       </div>
     </>
   );

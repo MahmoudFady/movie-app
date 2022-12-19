@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
+
 const Loader = (props) => {
-  const { loader } = props;
+  const loader = useSelector((data) => data.loader.loader);
   return (
     <>
       {loader && (

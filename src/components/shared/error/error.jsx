@@ -1,5 +1,9 @@
+import { data } from "jquery";
+import { useSelector } from "react-redux";
+
 const Error = (props) => {
-  const { loader, error } = props;
+  const loader = useSelector((data) => data.loader.loader);
+  const error = useSelector((data) => data.error.error);
   return (
     <>
       {!loader && error && (
