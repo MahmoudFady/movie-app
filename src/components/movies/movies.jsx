@@ -8,10 +8,9 @@ import Loader from "../shared/loader/loader";
 import Error from "../shared/error/error";
 const Movies = () => {
   const { movieState } = useParams();
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([{}]);
   const [pageIndex, setPageIndex] = useState(1);
   const loader = useSelector((data) => data.loader.loader);
-  const error = useSelector((data) => data.error.error);
   useEffect(() => {
     getMovies(movieState, pageIndex).then((response) => {
       const movies = response.data.results;

@@ -9,4 +9,7 @@ const searchByName = (target) => {
 const getMovieDetailsById = (id) => {
   return axiosInstance.get(`movie/${id}`);
 };
-export { getMovies, searchByName, getMovieDetailsById };
+const getSimilarMovies = (id, page = 1) => {
+  return axiosInstance.get(`movie/${id}/similar?page=${page}`);
+};
+export { getMovies, searchByName, getMovieDetailsById, getSimilarMovies };

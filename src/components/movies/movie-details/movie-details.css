@@ -1,0 +1,61 @@
+div.movie-details-hook {
+  margin-top: 25px;
+  box-shadow: var(--boxShadow);
+  border-radius: 5px;
+  overflow: hidden;
+}
+div.movie-details-hook > div {
+  padding: 0px;
+}
+img.poster-img {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+div.movie-details {
+  padding: 25px;
+}
+div.movie-details > div {
+  margin-bottom: 25px;
+}
+.movie-details p {
+  color: var(--textColor);
+}
+div.movie-time {
+  color: var(--textColor);
+}
+div.movie-time i {
+  margin-right: 10px;
+}
+div.movie-time span {
+  display: inline-block;
+  margin-right: 25px;
+}
+div.rate div.rate-container {
+  position: relative;
+  margin-top: 25px;
+  width: 300px;
+  height: 15px;
+  background-color: #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+div.rate div.rate-container span {
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  background-color: rgb(129, 129, 255);
+  text-align: right;
+  color: #ffff;
+  padding-right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+div.watch-now button {
+  width: auto;
+  background-color: var(--mainColor);
+  color: #fff;
+}
