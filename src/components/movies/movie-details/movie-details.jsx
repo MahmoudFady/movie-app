@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getMovieDetailsById, getSimilarMovies } from "../movie-http";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import getMovieById from "../../../store/actions/getMovieById";
+import getSimilarMovies from "../../../store/actions/getSimilarMovies";
+import { useDispatch, useSelector } from "react-redux";
 import Movie from "../movie/movie";
 import Loader from "../../shared/loader/loader";
 import Error from "../../shared/error/error";
@@ -10,20 +11,12 @@ const MovieDetails = (props) => {
   const loader = useSelector((data) => data.loader.loader);
   const error = useSelector((data) => data.error.error);
   const { id } = useParams();
-  const [movie, setMovie] = useState({});
-  const [similarMovies, setSimilarMovies] = useState([]);
+  const { movieDetails: movie, similarMovies } = useSelector((data) => data);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getMovieDetailsById(id).then((response) => {
-      const movie = response.data;
-      setMovie(movie);
-      console.log(movie);
-    });
-    getSimilarMovies(id).then((response) => {
-      const movies = response.data.results;
-      setSimilarMovies(movies);
-      console.log(similarMovies);
-    });
+    dispatch(getMovieById(id));
+    dispatch(getSimilarMovies(id));
   }, [id]);
   return (
     <>

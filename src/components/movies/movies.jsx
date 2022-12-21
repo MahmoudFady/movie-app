@@ -1,32 +1,27 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getMovies, searchByName } from "./movie-http";
+import getMovies from "../../store/actions/getMovies";
 import "./movies.css";
 import Movie from "./movie/movie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../shared/loader/loader";
 import Error from "../shared/error/error";
 const Movies = () => {
   const { movieState } = useParams();
-  const [movies, setMovies] = useState([{}]);
+  const movies = useSelector((data) => data.movies);
+  const dispatch = useDispatch();
   const [pageIndex, setPageIndex] = useState(1);
   const loader = useSelector((data) => data.loader.loader);
   useEffect(() => {
-    getMovies(movieState, pageIndex).then((response) => {
-      const movies = response.data.results;
-      setMovies(movies);
-    });
+    dispatch(getMovies(`movie/${movieState}?page=${pageIndex}`));
   }, [movieState, pageIndex]);
   const handleMovieSearch = (e) => {
     const target = e.target.value;
-    const moviesPromise =
+    const url =
       target.trim() === ""
-        ? getMovies(movieState, pageIndex)
-        : searchByName(target);
-    moviesPromise.then((response) => {
-      const movies = response.data.results;
-      setMovies(movies);
-    });
+        ? `movie/${movieState}?page=${pageIndex}`
+        : `search/movie?query=${target}`;
+    dispatch(getMovies(url));
   };
   const handleMoviesPageIndex = (num) => {
     setPageIndex(num + pageIndex);

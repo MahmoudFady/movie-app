@@ -1,12 +1,12 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Navbar = (props) => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-light bg-light">
-        <Link className="navbar-brand" to="/movies/m/popular">
+        <NavLink className="navbar-brand" to="/movies/m/popular">
           <img src="https://www.watchit.com/assets/images/logo.png" alt="" />
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,34 +21,54 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <Link className="nav-link" to="/movies/m/popular">
+              <NavLink
+                activeClassName="active-nav"
+                className="nav-link"
+                to="/movies/m/popular"
+              >
                 {" "}
                 <i class="fa-solid fa-fire"></i> popular
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/movies/m/top_rated">
+              <NavLink
+                className="nav-link"
+                activeClassName="active-nav"
+                to="/movies/m/top_rated"
+              >
                 {" "}
                 <i className="fa-solid fa-arrow-trend-up"></i> top rated
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/movies/m/upcoming">
+              <NavLink
+                className="nav-link"
+                activeClassName="active-nav"
+                to="/movies/m/upcoming"
+              >
                 {" "}
                 <i class="fas fa-spinner"></i> coming soon
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/user/auth/signin">
+              <NavLink
+                className="nav-link"
+                activeClassName="active-nav"
+                to="/user/auth/signin"
+              >
                 {" "}
                 <i className="fa-solid fa-arrow-right-to-bracket"></i> sign in
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/user/auth/signup">
+              <NavLink
+                className="nav-link"
+                activeClassName="active-nav"
+                to="/user/auth/signup"
+              >
                 {" "}
                 <i className="fa-solid fa-user-plus"></i> sign up
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>

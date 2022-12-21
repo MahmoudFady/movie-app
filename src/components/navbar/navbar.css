@@ -14,10 +14,19 @@
 }
 .navbar .navbar-collapse ul li {
   text-align: center;
+  transition: 0.8s all linear;
 }
 @media screen and (max-width: 768px) {
   .navbar .navbar-collapse ul li {
     margin: 5px auto;
     padding: 5px;
   }
+}
+.navbar .navbar-collapse ul li a {
+  border-radius: 25px;
+  padding: 10px 15px !important;
+}
+.active-nav {
+  background-color: var(--mainColor);
+  color: #000 !important;
 }

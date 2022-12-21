@@ -14,6 +14,7 @@ import PageNotFound from "./components/404/404.jsx";
 function App() {
   return (
     <div className="App">
+      {" "}
       <Router>
         <Navbar />
         <div className="container">
